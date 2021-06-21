@@ -1,0 +1,25 @@
+server:
+  port: 8090
+
+mybatis:
+  mapper-locations: mapper/**/*.xml
+  type-aliases-package: com.koreait.facebookClone1
+
+spring:
+  thymeleaf:
+#    prefix: classpath:templates/
+#    suffix: .html
+#    mode: HTML
+    cache: false
+#      check-template: true
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3308/facebook
+    username: root
+    password: koreait
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
