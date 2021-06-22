@@ -10,7 +10,16 @@
     </th:block>
 
     <th:block layout:fragment="content">
-        <h1>로그인</h1>
+        <div th:if="${param.needEmail != null and param.needEmail[0] == '1'}">이메일 인증을 해주세요</div>
+        <div th:if="${param.auth != null and param.auth[0] == '1'}">인증에 성공하셨습니다</div>
+        <div th:if="${param.auth != null and param.auth[0] == '0'}">인증에 실패하셨습니다</div>
+
+        <form th:action="@{login}" method="post" th:object="${userEntity}">
+            <div><input type="email" th:field="*{email}" placeholder="이메일" autofocus required></div>
+            <div><input type="password" th:field="*{pw}" placeholder="비밀번호" required></div>
+            <div><input type="submit" value="로그인"></div>
+        </form>
+
         <div>
             <a th:href="@{join}">회원가입</a>
         </div>

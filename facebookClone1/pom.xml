@@ -78,6 +78,22 @@
             <version>0.4</version>
         </dependency>
 
+        <!--이메일-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+
+        <!--랜덤한 숫자사용할 수 있게 해주는 라이브러리-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>

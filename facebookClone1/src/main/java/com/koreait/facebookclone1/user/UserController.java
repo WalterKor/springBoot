@@ -3,6 +3,7 @@ package com.koreait.facebookclone1.user;
 import com.koreait.facebookclone1.user.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/login")
-    public void login(){ }
+    public void login(UserEntity userEntity, Model model){ }
 
     @GetMapping("/join")
     public void join(UserEntity userEntity){ }
@@ -23,7 +24,13 @@ public class UserController {
     @PostMapping("/join")
     public String joinPost(UserEntity userEntity){
         userService.join(userEntity);
-        return "redirect:/feed/home";
+        return "redirect:login?needmail=1";
+    }
+
+    @GetMapping("/auth")
+    public String auth(UserEntity param){
+        int result = userService.auth(param);
+        return "redirect:login?auth=" + result;
     }
 
 

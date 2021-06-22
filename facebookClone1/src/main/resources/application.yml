@@ -23,3 +23,20 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
+
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: splitcreed1760@gamail.com
+    password: aeirwtxiyvqanase
+    properties:
+      mail:
+        smtp:
+          startls:
+            enable: true
+            required: true
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
