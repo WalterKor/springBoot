@@ -17,29 +17,29 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration //설정파일이야
 @EnableWebSecurity //활성화
-public class securityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 
     @Autowired
     private UserDetailsService userDetails;
 
-
-    @Bean //비크립트 비밀번호 인코더하는거
-    public PasswordEncoder passwordEncoder(){
+    @Bean
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception{
-        // css폴더랑 js폴더 img 밑에 권한을 무시한다
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/error", "favicon.ico", "/resources/**");
     }
 
+
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/user/login","/user/join").permitAll()
+                .antMatchers("/user/login", "/user/join","/user/auth").permitAll()
                 .anyRequest().authenticated();
 
         http.formLogin()
@@ -52,14 +52,11 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
                 .logoutSuccessUrl("/user/login")
                 .invalidateHttpSession(true);
-
     }
-
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder());
     }
-
 
 }

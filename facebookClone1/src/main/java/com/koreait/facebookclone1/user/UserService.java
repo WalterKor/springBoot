@@ -2,10 +2,12 @@ package com.koreait.facebookclone1.user;
 
 import com.koreait.facebookclone1.common.EmailService;
 import com.koreait.facebookclone1.common.MySecurityUtils;
+import com.koreait.facebookclone1.security.IAuthenticationFacade;
 import com.koreait.facebookclone1.user.model.UserEntity;
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,22 +15,26 @@ import javax.servlet.http.HttpSession;
 public class UserService {
 
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private MySecurityUtils mySecurityUtils;
     @Autowired
     private EmailService emailService;
-    @Autowired
-    private HttpSession httpSession;
 
+    @Autowired
+    private IAuthenticationFacade
 
     public int join(UserEntity userEntity) {
 
         String rVal = mySecurityUtils.getRandomValue1(5);
         System.out.println("Random Num : " + rVal);
-        String hashPw = BCrypt.hashpw(userEntity.getPw(), BCrypt.gensalt());
-        userEntity.setPw(hashPw);
+        //String hashPw = BCrypt.hashpw(userEntity.getPw(), BCrypt.gensalt());
+        String hashedPw = passwordEncoder.encode(userEntity.getPw());
+        userEntity.setPw(hashedPw);
         userEntity.setAuthCd(rVal);
 
         int result = userMapper.join(userEntity);
@@ -46,11 +52,9 @@ public class UserService {
         return userMapper.upAuth(param);
     }
 
-    //로그인
-    public String login(UserEntity param) {
-        UserEntity loginUser = userMapper.selUser(param);
-
-        return "";
+    public void profileImg(MultipartFile[] imgArr){
 
     }
+
+
 }

@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 //실제로 작업이 이루어지는 공간
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
@@ -24,6 +26,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         UserEntity loginUser = mapper.selUser(param);
 
+        if(loginUser == null){
+            return null; //아이디가 없는 상태
+        }
         return new UserDetailsImpl(loginUser);
 
 

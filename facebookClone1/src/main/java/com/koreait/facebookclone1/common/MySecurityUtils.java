@@ -2,6 +2,8 @@ package com.koreait.facebookclone1.common;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.UUID;
 

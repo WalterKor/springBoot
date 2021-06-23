@@ -72,12 +72,6 @@
             <version>2.5.3</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.mindrot</groupId>
-            <artifactId>jbcrypt</artifactId>
-            <version>0.4</version>
-        </dependency>
-
         <!--이메일-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

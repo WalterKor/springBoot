@@ -14,7 +14,8 @@
     </update>
 
     <select id="selUser" resultType="UserEntity">
-        SELECT * FROM current_user
+        SELECT * FROM t_user
         WHERE email = #{email}
     </select>
+
 </mapper>
