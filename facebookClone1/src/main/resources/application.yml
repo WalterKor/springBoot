@@ -25,18 +25,15 @@ spring:
       max-request-size: 50MB
 
 
+
   mail:
     host: smtp.gmail.com
     port: 587
-    username: splitcreed1760@gamail.com
-    password: aeirwtxiyvqanase
+    username: splitcreed1760@gmail.com
+    password: evjddiubfejuaqgi
     properties:
       mail:
         smtp:
-          startls:
-            enable: true
-            required: true
           auth: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
+          starttls:
+            enable: true

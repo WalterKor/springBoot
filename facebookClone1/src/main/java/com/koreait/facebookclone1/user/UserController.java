@@ -18,6 +18,14 @@ public class UserController {
     @GetMapping("/login")
     public void login(UserEntity userEntity, Model model){ }
 
+    @PostMapping("/login")
+    public String loginporc(UserEntity param){
+
+        return userService.login(param);
+
+    }
+
+
     @GetMapping("/join")
     public void join(UserEntity userEntity){ }
 

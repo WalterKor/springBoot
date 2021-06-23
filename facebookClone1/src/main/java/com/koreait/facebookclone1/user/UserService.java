@@ -45,4 +45,12 @@ public class UserService {
     public int auth(UserEntity param) {
         return userMapper.upAuth(param);
     }
+
+    //로그인
+    public String login(UserEntity param) {
+        UserEntity loginUser = userMapper.selUser(param);
+
+        return "";
+
+    }
 }
