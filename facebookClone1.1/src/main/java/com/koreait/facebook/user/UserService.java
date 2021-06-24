@@ -11,6 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.xml.transform.Result;
+
 @Service
 public class UserService {
 
@@ -62,24 +64,41 @@ public class UserService {
     }
 
     public void profileImg(MultipartFile[] imgArr) {
+
         //로그인한 사람의 pk값을 얻기위해서
 
+        UserEntity loginUser = auth.getLoginUser();
         int iuser = auth.getLoginUserPk();
 
-
-        System.out.println("iuser : " + iuser);
         //저장루트
         UserProfileEntity param = new UserProfileEntity();
         param.setIuser(iuser);
         String target = "profile/" + iuser;
+
 
         for(MultipartFile img : imgArr) {
             String saveFileNm = myFileUtils.transferTo(img, target);
             //saveFileNm이 null이 아니라면 t_user_profile테이블에
             //insert해주세요
            if(saveFileNm != null){
+
                param.setImg(saveFileNm);
-               profileMapper.insUserProfile(param);
+
+               if(profileMapper.insUserProfile(param) == 1 && loginUser.getMainProfile() == null){
+
+                   UserEntity param2 = new UserEntity();
+                   param2.setIuser(loginUser.getIuser());
+                   param2.setMainProfile(saveFileNm);
+
+                   if(mapper.updUser(param2) == 1){
+                       //시큐리티 맞춰주기위해서
+                       loginUser.setMainProfile(saveFileNm);
+                   }
+
+
+
+               }
+
            }
 
         }
