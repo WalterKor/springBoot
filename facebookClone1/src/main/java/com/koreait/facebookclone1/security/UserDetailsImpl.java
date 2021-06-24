@@ -15,9 +15,6 @@ public class UserDetailsImpl implements UserDetails {
         this.user = user;
     }
 
-
-
-
     @Override
     //권한 같은 사용자지만 등급처리
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -58,9 +55,9 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
-    public UserEntity getUser() {
-        return user;
-    }
+    public String getNm(){ return user.getNm();}
+
+    public UserEntity getUser() { return user; }
 
 
 

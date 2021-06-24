@@ -26,7 +26,7 @@ public class UserService {
     private EmailService emailService;
 
     @Autowired
-    private IAuthenticationFacade
+    private IAuthenticationFacade iAuthenticationFacade;
 
     public int join(UserEntity userEntity) {
 

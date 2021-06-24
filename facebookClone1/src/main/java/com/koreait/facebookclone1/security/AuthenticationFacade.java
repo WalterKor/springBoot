@@ -14,7 +14,6 @@ public class AuthenticationFacade implements  IAuthenticationFacade{
     public UserEntity getLoginUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserPrincipal userDetails = (UserPrincipal) auth.getPrincipal();
-
         return userDetails.getUser();
     }
 

@@ -22,6 +22,7 @@ public class UserController {
     @GetMapping("/login")
     public void login(UserEntity userEntity) {}
 
+
     @GetMapping("/join")
     public void join(UserEntity userEntity) {}
 
