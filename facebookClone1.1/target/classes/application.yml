@@ -23,9 +23,10 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
   servlet:
     multipart:
-      max-file-size: 5MB
-      max-request-size: 30MB
+      max-file-size: 50MB
+      max-request-size: 50MB
       location: D:/springImg
+
 mybatis:
   mapper-locations: mybatis-mapper/**/*.xml
   type-aliases-package: com.koreait.facebook

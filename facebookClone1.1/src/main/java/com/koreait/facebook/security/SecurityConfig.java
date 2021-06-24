@@ -21,9 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetails;
 
     @Bean
+    //리턴해주는게 빈등록
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {

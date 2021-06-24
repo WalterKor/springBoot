@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UserService {
+
     @Autowired
     private EmailService email;
 
@@ -23,7 +24,13 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
+    private UserProfileMapper profileMapper;
+
+
+    //인터페이스를
+    @Autowired
     private IAuthenticationFacade auth;
+
 
     @Autowired
     private MyFileUtils myFileUtils;
@@ -55,12 +62,33 @@ public class UserService {
     }
 
     public void profileImg(MultipartFile[] imgArr) {
+        //로그인한 사람의 pk값을 얻기위해서
+
         int iuser = auth.getLoginUserPk();
+
+
         System.out.println("iuser : " + iuser);
+        //저장루트
+        UserProfileEntity param = new UserProfileEntity();
+        param.setIuser(iuser);
         String target = "profile/" + iuser;
 
         for(MultipartFile img : imgArr) {
             String saveFileNm = myFileUtils.transferTo(img, target);
+            //saveFileNm이 null이 아니라면 t_user_profile테이블에
+            //insert해주세요
+           if(saveFileNm != null){
+               param.setImg(saveFileNm);
+               profileMapper.insUserProfile(param);
+           }
+
         }
     }
+
+
+
+
+
+
+
 }

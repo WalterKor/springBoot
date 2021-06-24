@@ -8,3 +8,17 @@ CREATE TABLE t_user(
    regdt DATETIME DEFAULT NOW(),
    INDEX idx_auth_cd (`authCd`)
 );
+
+
+/* pk값은 있어줘야한다. 레코드의 대표값이다. */
+/* Pk는 테이블의 identity */
+CREATE TABLE t_user_profile(
+    iprofile INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    iuser INT UNSIGNED,
+    img VARCHAR(50),
+    regdt datetime DEFAULT NOW(),
+    FOREIGN KEY(iuser) REFERENCES t_user(iuser)
+);
+
+
+
