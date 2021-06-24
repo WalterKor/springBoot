@@ -11,7 +11,7 @@
         <form th:action="@{profileImg}" method="post" enctype="multipart/form-data">
             <!--multiful를 했기때문에 여러가지 이미지를 한꺼번에 올릴 수 있다.-->
             <!--imgArr 컨트롤러 배열과 이름을 맞춰줘야한다. -->
-            <div>이미지 : <input type="file" name="imgArr"><input type="submit" value="업로드"></div>
+            <div>이미지 : <input type="file" name="imgArr" multiple accept="image/*"><input type="submit" value="업로드"></div>
         </form>
     </th:block>
 </html>
