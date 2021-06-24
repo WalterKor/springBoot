@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/error", "favicon.ico", "/resources/**");
+        web.ignoring().antMatchers("/pic/**","/css/**", "/js/**", "/img/**", "/error", "favicon.ico", "/resources/**");
     }
 
     @Override
@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/pic/**", "/user/login", "/user/join", "/user/auth").permitAll()
+                .antMatchers( "/user/login", "/user/join", "/user/auth").permitAll()
                 .anyRequest().authenticated();
 
         http.formLogin()
