@@ -4,6 +4,7 @@ const modalCloseElem = document.querySelector('section .modal .modal_close');
 
 //모든 no-main-profile 아이콘에 이벤트를 걸어준다.
 //이벤트는 메인 이미지 변경처리
+//querySelectorAll은 배열로 넘어와서 처리한다
 const profileImgParentList = document.querySelectorAll('.profile-img-parent');
 profileImgParentList.forEach(item => {
     const iElem = item.querySelector('i');
@@ -23,6 +24,7 @@ function addIElemEvent(target) {
 
 //메인 이미지 변경
 function changeMainProfile(iprofile) {
+    //get방식으로 날아감
     fetch(`/user/mainProfile?iprofile=${iprofile}`)
         .then(res => res.json())
         .then(myJson => {
@@ -31,14 +33,31 @@ function changeMainProfile(iprofile) {
                     alert('메인 이미지 변경에 실패하였습니다.');
                     break;
                 case 1:
+                    //새롭게 종들을 셋팅한다.
                     setMainProfileIcon(iprofile);
+
+                    //헤더에있는 프로필 이미지 변경
+
+                    //Section에있는 프로필 이미지 변경
+                    const src = profileImgElem.src;
+                    const frontScr = scr.substring(src.lastIndexOf("/") + 1);
+                    profileImgElem.src = frontScr + myJson.img;
+
+
+                    //헤더에 있는 프로필 이미지변경
+                    const headerProfileImgElem = document.querySelectorAll('header .span')
+
+
+
                     break;
             }
         });
 }
-
+                            //현재 mainProfile로 바뀐 iprofile값
 function setMainProfileIcon(iprofile) {
+
     profileImgParentList.forEach(item => {
+
         item.innerHTML = '';
 
         const itemIprofile = item.dataset.iprofile;
@@ -61,4 +80,5 @@ profileImgElem.addEventListener('click', () => {
 //모달창 닫기
 modalCloseElem.addEventListener('click', () => {
     modalElem.classList.add('hide');
+
 })

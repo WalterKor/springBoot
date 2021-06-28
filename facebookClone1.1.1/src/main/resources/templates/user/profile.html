@@ -40,6 +40,7 @@
                         <!-- Slides -->
                         <div class="swiper-slide" th:each="item : ${profileList}">
                             <div>
+                                <!--/*@thymesVar id="iprofile" type=""*/-->
                                 <div class="profile-img-parent" th:attr="data-iprofile=${item.iprofile}">
                                     <i th:unless="${item.img == auth.mainProfile}" class="no-main-profile pointer fas fa-bell"></i>
                                 </div>

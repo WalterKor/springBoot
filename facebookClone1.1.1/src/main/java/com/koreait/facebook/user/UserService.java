@@ -13,7 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -93,8 +95,22 @@ public class UserService {
     }
 
     //메인 이미지 변경
-    public int updUserMainProfile(UserProfileEntity param) {
+    public Map<String,Object> updUserMainProfile(UserProfileEntity param) {
+        UserEntity loginUser = auth.getLoginUser();
+
         param.setIuser(auth.getLoginUserPk());
-        return mapper.updUserMainProfile(param);
+        int result = mapper.updUserMainProfile(param);
+
+        if(result == 1){
+            //시큐리티 세션에 있는 loginUser에있는 메인 프로필 값도 바꿔줘야한다.
+            System.out.println("img : " + param.getImg());
+            loginUser.setMainProfile(param.getImg());
+
+        }
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("result", result);
+        res.put("img", param.getImg());
+        return res;
     }
 }

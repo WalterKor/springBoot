@@ -57,12 +57,11 @@ public class UserController {
         return "redirect:profile";
     }
 
-    @ResponseBody
+
+    @ResponseBody //JSON형태로 리턴해주는게 목표가 된다.
     @GetMapping("/mainProfile")
-    public Map<String, Integer> mainProfile(UserProfileEntity param) {
-        Map<String, Integer> res = new HashMap();
-        res.put("result", service.updUserMainProfile(param));
-        return res;
+    public Map<String, Object> mainProfile(UserProfileEntity param) {
+        return service.updUserMainProfile(param);
     }
 }
 

@@ -25,9 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    //필터영역에서 잡지마라고 설정하는거임
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/pic/**", "/css/**", "/js/**", "/img/**", "/error", "favicon.ico", "/resources/**");
+        web.ignoring().antMatchers("/pic/**", "/css/**", "/js/**", "/img/**", "/error", "favicon.ico");
+        //"/css/**", "/js/**" 이거두개만 기본셋팅이 되어있다. 나머지는 접근이 안된다
     }
 
     @Override
