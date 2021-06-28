@@ -33,22 +33,23 @@ function changeMainProfile(iprofile) {
                     alert('메인 이미지 변경에 실패하였습니다.');
                     break;
                 case 1:
-                    //새롭게 종들을 셋팅한다.
                     setMainProfileIcon(iprofile);
+                    //바뀐 메인이미지 img 찾기
+                    const findParentDiv = profileImgParentList.find(item => {
+                        return item.dataset.iprofile === iprofile;
+                    })
 
-                    //헤더에있는 프로필 이미지 변경
-
-                    //Section에있는 프로필 이미지 변경
+                    let findParentDiv = null;
+                    for
+                    //section에 있는 프로필 이미지 변경
                     const src = profileImgElem.src;
-                    const frontScr = scr.substring(src.lastIndexOf("/") + 1);
-                    profileImgElem.src = frontScr + myJson.img;
+                    const frontSrc = src.substring(0, src.lastIndexOf("/"));
+                    const resultSrc = `${frontSrc}/${myJson.img}`
+                    profileImgElem.src = resultSrc;
 
-
-                    //헤더에 있는 프로필 이미지변경
-                    const headerProfileImgElem = document.querySelectorAll('header .span')
-
-
-
+                    //헤더에 있는 프로필 이미지 변경
+                    const headerProfileImgElem = document.querySelector('header .span__profile img');
+                    headerProfileImgElem.src = resultSrc;
                     break;
             }
         });

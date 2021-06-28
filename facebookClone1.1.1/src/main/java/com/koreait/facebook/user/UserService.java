@@ -95,20 +95,16 @@ public class UserService {
     }
 
     //메인 이미지 변경
-    public Map<String,Object> updUserMainProfile(UserProfileEntity param) {
+    public Map<String, Object> updUserMainProfile(UserProfileEntity param) {
         UserEntity loginUser = auth.getLoginUser();
 
-        param.setIuser(auth.getLoginUserPk());
+        param.setIuser(loginUser.getIuser());
         int result = mapper.updUserMainProfile(param);
-
-        if(result == 1){
-            //시큐리티 세션에 있는 loginUser에있는 메인 프로필 값도 바꿔줘야한다.
+        if(result == 1) { //시큐리티 세션에 있는 loginUser에 있는 mainProfile값도 변경해주어야 한다.
             System.out.println("img : " + param.getImg());
             loginUser.setMainProfile(param.getImg());
-
         }
-
-        Map<String, Object> res = new HashMap<>();
+        Map<String, Object> res = new HashMap();
         res.put("result", result);
         res.put("img", param.getImg());
         return res;

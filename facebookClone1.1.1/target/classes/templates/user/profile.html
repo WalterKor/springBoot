@@ -27,6 +27,27 @@
             <div>
                 <img class="profile w300 pointer"
                      th:src="@{/pic/profile/{iuser}/{img}(iuser=${auth.iuser}, img=${auth.mainProfile})}">
+                <table>
+                    <tr>
+                        <th>이메일</th>
+                        <td th:text="${auth.email}"></td>
+                    </tr>
+
+                    <tr>
+                        <th>name</th>
+                        <td th:text="${auth.nm}"></td>
+                    </tr>
+
+                    <tr>
+                        <th>전화번호</th>
+                        <td th:text="${auth.tel}"></td>
+                    </tr>
+
+                    <tr>
+                        <th>등록일</th>
+                        <td th:text="${auth.regdt}"></td>
+                    </tr>
+                </table>
             </div>
         </div>
 
