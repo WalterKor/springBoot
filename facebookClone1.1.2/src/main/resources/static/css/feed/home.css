@@ -1,2 +1,6 @@
 section{ display: flex; justify-content: center;}
 section #feedContainer{ width: 620px; }
+#feedContainer .itemProfileCont { display: flex;}
+#feedContainer .item { padding: 10px; border-radius: 3px; border: 1px solid cadetblue; }
+#feedContainer .item .top{ display: flex; }
+#feedContainer .itemProfileCont img {width: 32px; border-radius: 50%;}
