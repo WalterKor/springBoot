@@ -15,4 +15,18 @@
         VALUES
         ( #{ifeed}, #{img} )
     </insert>
+
+    <select id="selFeedList" resultType="FeedDomain">
+        SELECT A.ifeed,A.location,A.ctnt,A.regdt,
+        B.ifeedimg,B.img,
+        C.mainProfile, C.nm AS writer
+        FROM t_feed A
+        LEFT JOIN t_feed_img B
+        ON A.ifeed = B.ifeed
+        INNER JOIN t_user C
+        ORDER BY A.ifeed DESC;
+    </select>
+
+
+
 </mapper>
