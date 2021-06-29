@@ -60,7 +60,6 @@ btnUploadElem.addEventListener('click', () => {
     //ctnt 담고
     if(ctntElem.value.length > 0){ data.append(ctntElem.id, ctntElem.value);}
     if(locationElem.value.length > 0){ data.append(locationElem.id, locationElem.value);}
-
     //사진 file담고
     if(fileList.length > 0){
         for(let i=0; i<fileList.length; i++){
@@ -74,6 +73,13 @@ btnUploadElem.addEventListener('click', () => {
     })
         .then(res => res.json())
         .then(myJson =>{
-            console.log(myJson);
+            switch (myJson.result){
+                case 0:
+                    alert('피드 등록에 실패하였습니다.');
+                    break;
+                case 1:
+                    location.href = '/feed/home';
+                    break;
+            }
         })
 })

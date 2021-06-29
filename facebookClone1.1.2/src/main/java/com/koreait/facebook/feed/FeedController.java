@@ -1,5 +1,6 @@
 package com.koreait.facebook.feed;
 
+import com.koreait.facebook.common.MyConst;
 import com.koreait.facebook.feed.model.FeedEntity;
 import com.koreait.facebook.security.IAuthenticationFacade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -16,9 +18,11 @@ public class FeedController {
 
     @Autowired
     private FeedService service;
-
     @Autowired
     private IAuthenticationFacade auth;
+    @Autowired
+    private MyConst myConst;
+
 
     @GetMapping("/home")
     public void home() {}
@@ -29,12 +33,11 @@ public class FeedController {
     @ResponseBody
     @PostMapping("/reg")
     public Map<String, Integer> reg(MultipartFile[] imgArr, FeedEntity param){
-        System.out.println("length: " + imgArr.length); //imgArr.length인상태에서 .method는 무조건 nullpoint에러 터진다.
 
-        param.setIuser(auth.getLoginUserPk());
+        Map<String, Integer> res = new HashMap<>();
+        res.put(myConst.RESULT, service.reg(imgArr, param));
+        return res;
 
-        service.reg(imgArr, param);
-        return null;
     }
 
 }

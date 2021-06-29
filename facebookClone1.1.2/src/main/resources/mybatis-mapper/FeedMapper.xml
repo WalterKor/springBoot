@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.koreait.facebook.feed.FeedMapper">
-    <insert id="insFeed">
+    <!--useGeneratedKeys="true" keyProperty="ifeed" ifeed값을 받아오는 방법 -->
+    <insert id="insFeed" useGeneratedKeys="true" keyProperty="ifeed">
         INSERT INTO t_feed
         ( location, ctnt, iuser )
         VALUES
         ( #{location}, #{ctnt}, ${iuser} )
-
-        <selectKey order="AFTER" resultType="int" keyColumn="ifeed" keyProperty="ifeed">
-            SELECT ifeed FROM t_feed WHERE ifeed = #{ifeed}
-        </selectKey>
-
     </insert>
 
     <insert id="insFeedImg">
