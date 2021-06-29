@@ -1,5 +1,6 @@
 const fileList = [];
 const ctntElem = document.querySelector('#ctnt');
+const locationElem = document.querySelector('#location');
 const selectImgArrElem = document.querySelector('#selectImgArr');
 const btnUploadElem = document.querySelector('#btnUpload');
 const displayImgListElem = document.querySelector('#displayImgList');
@@ -57,9 +58,8 @@ btnUploadElem.addEventListener('click', () => {
 
     const data = new FormData();
     //ctnt 담고
-    if(ctntElem.value.length > 0){
-        data.append('ctnt', ctntElem.value)
-    }
+    if(ctntElem.value.length > 0){ data.append(ctntElem.id, ctntElem.value);}
+    if(locationElem.value.length > 0){ data.append(locationElem.id, locationElem.value);}
 
     //사진 file담고
     if(fileList.length > 0){

@@ -6,6 +6,11 @@
         ( location, ctnt, iuser )
         VALUES
         ( #{location}, #{ctnt}, ${iuser} )
+
+        <selectKey order="AFTER" resultType="int" keyColumn="ifeed" keyProperty="ifeed">
+            SELECT ifeed FROM t_feed WHERE ifeed = #{ifeed}
+        </selectKey>
+
     </insert>
 
     <insert id="insFeedImg">
