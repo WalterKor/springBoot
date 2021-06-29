@@ -55,8 +55,9 @@ function toggleBtnUpload(){
 
 //등록버튼 클릭시 (Ajax로 파일 업로드)
 btnUploadElem.addEventListener('click', () => {
-
+    //데이터라는 객체를 만들고
     const data = new FormData();
+
     //ctnt 담고
     if(ctntElem.value.length > 0){ data.append(ctntElem.id, ctntElem.value);}
     if(locationElem.value.length > 0){ data.append(locationElem.id, locationElem.value);}
@@ -66,7 +67,6 @@ btnUploadElem.addEventListener('click', () => {
             data.append('imgArr', fileList[i]);
         }
     }
-
     fetch('/feed/reg',{
         method: 'post',
         body: data
