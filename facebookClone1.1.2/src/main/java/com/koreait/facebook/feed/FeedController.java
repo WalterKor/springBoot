@@ -43,11 +43,8 @@ public class FeedController {
     }
 
     @ResponseBody
-    @GetMapping
-    public List<FeedDomain> selFeedList(){
-        return service.selFeedList();
-
-    }
+    @GetMapping("/list")
+    public List<FeedDomain> selFeedList(){ return service.selFeedList(); }
 
 
 }

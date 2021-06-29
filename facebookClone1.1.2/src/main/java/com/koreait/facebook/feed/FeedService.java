@@ -52,7 +52,7 @@ public class FeedService {
         }
         return result;
     }
-
+    //리스트 가져오는거
     public List<FeedDomain> selFeedList() {
         return mapper.selFeedList();
     }
