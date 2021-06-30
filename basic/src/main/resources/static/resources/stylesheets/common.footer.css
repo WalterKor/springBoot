@@ -1,0 +1,23 @@
+body > footer{
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: #f0f2f4;
+    border-top: 0.0625rem solid #e0e2e4;
+    padding: 1.5rem 2rem;
+    display: flex;
+}
+body > footer> .spring{
+    flex: 1;
+}
+body > footer> .menu{
+    align-items: center;
+    display: flex;
+    color: #606264;
+    font-size: 0.8rem;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+body > footer> .menu > .item:not(:last-child){
+    margin-right: 1rem;
+}

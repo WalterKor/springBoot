@@ -1,0 +1,34 @@
+@import "common.footer.css";
+@import "common.header.css";
+@import "common.main.css";
+
+:root {
+    /*--header-height: 4.25rem;*/
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    justify-content: flex-start;
+    margin: 0;
+    position: absolute;
+}
+
+ol,ul{
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+
+}
+a:link, a:visited{
+    /*visited 이전에 방문했던..*/
+    color: inherit;
+    text-decoration: none;
+}

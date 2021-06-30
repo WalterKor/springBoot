@@ -1,0 +1,30 @@
+body > header {
+    top: 0;
+    /*left: 0;*/
+    /*width: 100%;*/
+    background-color: #000204a0;
+    /*box-sizing: border-box;*/
+    align-items: center;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1.5rem 2rem;
+    position: sticky;
+    z-index: 1;
+}
+
+body > header > .menu {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+body > header > .menu > .item:not(:last-child) {
+    margin-right: 1rem;
+}
+
+body > header > .spring {
+    flex: 1;
+}
