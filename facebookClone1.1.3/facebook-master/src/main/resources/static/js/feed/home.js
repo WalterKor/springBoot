@@ -49,6 +49,7 @@ function makeFeedList(data) {
             if(item.ctnt != null) {
                 const ctntDiv = document.createElement('div');
                 ctntDiv.innerText = item.ctnt;
+                ctntDiv.classList.add('itemCtnt');
                 itemContainer.append(ctntDiv);
             }
             feedContainerElem.append(itemContainer);
