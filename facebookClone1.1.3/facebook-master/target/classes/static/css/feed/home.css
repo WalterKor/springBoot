@@ -3,3 +3,7 @@ section #feedContainer { width: 620px; }
 #feedContainer .item { padding: 10px; border-radius: 3px; border: 1px solid #bdc3c7; margin-bottom: 50px; }
 #feedContainer .item .top { display: flex; }
 #feedContainer .itemProfileCont img { width: 32px; border-radius: 50%; }
+
+#feedContainer .item .itemImg { margin-top: 20px; }
+#feedContainer .item .itemImg img { width: 598px; }
+#feedContainer .item .itemCtnt { margin-top: 30px; margin-bottom: 20px; padding: 10px; }
