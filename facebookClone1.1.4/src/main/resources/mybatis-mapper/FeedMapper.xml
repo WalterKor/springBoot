@@ -41,8 +41,13 @@
         FROM t_feed A
         INNER JOIN t_user C
         ON A.iuser = C.iuser
-        <if test="iuser > 0">
+        <if test="iuserForMyFeed > 0">
             AND C.iuser = ${iuser}
+        </if>
+        <if test="iuserForFav > 0">
+            LEFT join t_feed_fav D
+            on D.iuser = ${iuserForFav}
+            And A.ifeed = D.ifeed
         </if>
         ORDER BY A.ifeed DESC
         LIMIT #{startIdx}, #{limit}
@@ -52,4 +57,19 @@
         SELECT ifeedimg, ifeed, img FROM t_feed_img
         WHERE ifeed = #{ifeed}
     </select>
+
+    <!--/////////////////////////////////////////////////////////////-->
+    <insert id="insFeedFav">
+        insert into t_feed_fav
+        (ifeedm iuser)
+        values
+        (#{ifeed}, #{iuser})
+    </insert>
+
+    <delete id="delFeedFav">
+        DELETE FROM t_feed_fav
+        where ifeed = #{ifeed}
+        and iuser = #{iuser}
+    </delete>
+
 </mapper>
