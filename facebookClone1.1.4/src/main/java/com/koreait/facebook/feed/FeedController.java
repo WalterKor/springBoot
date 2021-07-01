@@ -48,7 +48,6 @@ public class                                                                    
     @ResponseBody
     @GetMapping("/fav")
     public int favProc(FeedFavEntity param, int type){
-
         //type : 1 ins, 0-del
         System.out.println(param);
         System.out.println("type : " + type);
