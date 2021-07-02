@@ -21,7 +21,30 @@
 
 <%@ include file="/WEB-INF/views/header.jsp"%>
 <main>
-    메인입니다!
+    <form method="post" >
+        <div>
+        <label>
+            <input maxlength="50" name="email" placeholder="이메일" type="email">
+        </label>
+        </div>
+
+        <div>
+            <label>
+                <input maxlength="50" name="password" placeholder="비밀번호" type="password">
+            </label>
+        </div>
+        <div>
+            <input type="submit" value="로그인">
+        </div>
+        <div>
+            <a>아직 계정이 없으신가요?</a>
+            <a href="register" target="_self">회원가입</a>
+        </div>
+        <div>
+            <a>비밀번호를 분실하셨나요</a>
+            <a href="recover" target="_self">비밀번호 찾기</a>
+        </div>
+    </form>
 </main>
 
 <%@ include file="/WEB-INF/views/footer.jsp"%>

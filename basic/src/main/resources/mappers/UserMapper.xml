@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.yhp.basic.mappers.IUserMapper">
+    <!--    int 가아 니라 integer 이다 -->
+    <select id="selectUserCountByEmail" resultType="_int">
+        --인터페이스의 메소드이다.
+
+        SELECT COUNT(`index`)
+        FROM `basic`.`users`
+        WHERE `email` = #{email}
+
+    </select>
+    <select id="selectUserCountByNickName" resultType="_int">
+        SELECT COUNT(`index`)
+        FROM `basic`.`users`
+        WHERE `nickname` = #{nickname}
+    </select>
+</mapper>
