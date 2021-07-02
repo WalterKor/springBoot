@@ -16,4 +16,9 @@ public interface FeedMapper {
 
     int insFeedFav(FeedFavEntity param);
     int delFeedFav(FeedFavEntity param);
+
+
+    int insFeedCmt(FeedCmtEntity param);
+
+
 }

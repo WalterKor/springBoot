@@ -51,4 +51,13 @@ public class FeedController {
         System.out.println("type: " + type);
         return service.feedFavProc(param, type);
     }
+
+
+    @ResponseBody
+    @PostMapping("/cmt")
+    public int insFeedCmt(@RequestBody FeedCmtEntity param){
+        return service.insFeedCmt(param);
+    }
+
+
 }

@@ -83,4 +83,16 @@
         WHERE ifeed = #{ifeed}
         AND iuser = #{iuser}
     </delete>
+
+
+    <!--cmt///////////////////////////////////-->
+
+    <insert id="insFeedCmt">
+        insert into t_feed_cmt
+        (ifeed, iuser, cmt)
+        values
+        (${ifeed}, ${iuser}, ${cmt})
+    </insert>
+
+
 </mapper>

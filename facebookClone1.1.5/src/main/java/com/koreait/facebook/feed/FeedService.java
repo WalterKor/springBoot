@@ -48,4 +48,11 @@ public class FeedService {
         }
         return mapper.delFeedFav(param);
     }
+
+    //댓글
+    public int insFeedCmt(FeedCmtEntity param) {
+
+        param.setIuser(auth.getLoginUserPk());
+        return mapper.insFeedCmt(param);
+    }
 }

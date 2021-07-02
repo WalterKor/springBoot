@@ -120,6 +120,69 @@ const feedObj = {
                 ctntDiv.classList.add('itemCtnt');
                 itemContainer.append(ctntDiv);
             }
+
+            //댓글영역
+            const cmtDiv = document.createElement('div');
+            const cmtListDiv = document.createElement('div');
+            const cmtFormDiv = document.createElement('div');
+            cmtDiv.append(cmtListDiv);
+            cmtDiv.append(cmtFormDiv);
+
+            const cmtInput = document.createElement('input');
+            cmtInput.type = 'text';
+            cmtInput.placeholder = '댓글을 입력하세요';
+
+            const cmtBtn = document.createElement('input');
+            cmtBtn.type = 'button';
+            cmtBtn.value = '등록';
+            cmtBtn.addEventListener('click', ()=>{
+               const cmt = cmtInput.value;
+               if(cmt.length === 0){
+                   alert('댓글 내용을 작성해주세요');
+                   return;
+               }
+
+               const param = {
+                   ifeed : item.ifeed,
+                   cmt : cmt
+               }
+
+               fetch('cmt',{
+                   method : 'POST',
+                   headers : {
+                     'Accept' : 'application/json',
+                     'Content-Type' : 'application/json'
+                   },
+                   body : JSON.stringify(param)
+               })
+                   .then(res => res.json())
+                   .catch(err =>{
+                       console.log(err);
+                   })
+                   .then(myJson =>{
+                       console.log(myJson);
+                       switch (myJson){
+                           case 0:
+                               alert('댓글을 등록할 수 없습니다');
+                               break;
+
+                           case 1:
+                               cmtInput.value = '';
+                               break;
+                       }
+
+
+
+                   })
+
+            });
+
+            cmtFormDiv.append(cmtInput);
+            cmtFormDiv.append(cmtBtn);
+
+            itemContainer.append(cmtDiv);
+            this.containerElem.append(itemContainer);
+
             this.containerElem.append(itemContainer);
         }
         if(this.swiper != null) { this.swiper = null; }
@@ -160,3 +223,7 @@ const feedObj = {
     hideLoading: function() { this.loadingElem.classList.add('hide');},
     showLoading: function() { this.loadingElem.classList.remove('hide'); }
 }
+
+
+
+
