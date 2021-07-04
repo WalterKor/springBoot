@@ -156,8 +156,23 @@ const feedObj = {
                    body : JSON.stringify(param)
                })
                    .then(res => res.json())
+                   .catch(err =>{
+                       console.log(err);
+                   })
                    .then(myJson =>{
                        console.log(myJson);
+                       switch (myJson){
+                           case 0:
+                               alert('댓글을 등록할 수 없습니다');
+                               break;
+
+                           case 1:
+                               cmtInput.value = '';
+                               break;
+                       }
+
+
+
                    })
 
             });

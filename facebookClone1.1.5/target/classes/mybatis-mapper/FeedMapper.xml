@@ -86,6 +86,13 @@
 
 
     <!--cmt///////////////////////////////////-->
+    <select id="selFeedCmt">
+        select A.
+    </select>
+
+    <select id="selFeedCmtList">
+
+    </select>
 
     <insert id="insFeedCmt">
         insert into t_feed_cmt
