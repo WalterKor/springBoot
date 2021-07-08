@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:td="http://www.thymeleaf.org"
       layout:decorator="basicLayout">
     <head><title>프로필</title></head>
 
@@ -37,10 +37,25 @@
                         <td th:text="${profile.cntFollower}"></td>
                         <td>팔로우</td>
                         <td th:text="${profile.cntFollow}"></td>
+                        <td:block th:if="${profile.iuser eq authenticated.iuser}">
+
+                            </td>
                         <td>
-                            1. 팔로우
-                            2. 맞팔로우
-                            3. 팔로우 취소
+                            <th:block th:if="${profile.isFollowYou eq 1}">
+                                <input type="button" value="팔로우 취소">
+                            </th:block>
+
+                            <th:block th:unless="${profile.isFollowYou eq 1}">
+                                <input type="button" value="맞팔로우">
+                            </th:block>
+
+                            <th:block th:unless="${profile.isFollowMe eq 1}">
+                                <input type="button" value="팔로우">
+                            </th:block>
+
+                            <span th:text="${profile.isYouFollowMe}"></span>
+                            /
+                            <span th:text="${profile.isMeFollowYout}"></span>
                         </td>
                     </tr>
 

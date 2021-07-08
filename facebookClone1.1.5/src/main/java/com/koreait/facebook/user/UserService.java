@@ -7,6 +7,8 @@ import com.koreait.facebook.feed.FeedMapper;
 import com.koreait.facebook.feed.model.FeedDTO;
 import com.koreait.facebook.feed.model.FeedDomain2;
 import com.koreait.facebook.security.IAuthenticationFacade;
+import com.koreait.facebook.user.model.UserDTO;
+import com.koreait.facebook.user.model.UserDomain;
 import com.koreait.facebook.user.model.UserEntity;
 import com.koreait.facebook.user.model.UserProfileEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,12 @@ public class UserService {
     @Autowired private UserMapper mapper;
     @Autowired private FeedMapper feedMapper;
     @Autowired private UserProfileMapper profileMapper;
+
+    public UserDomain selUserProfile(UserDTO param){
+        param.setMeIuser(auth.getLoginUserPk());
+        param.getMeIuser()
+    }
+
 
     public int join(UserEntity param) {
         String authCd = secUtils.getRandomDigit(5);
