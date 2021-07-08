@@ -18,6 +18,11 @@ function getDateTimeInfo(dt) {
     return targetDt.toLocaleString();
 }
 
+//프로필화면으로 이동
+function moveToProfile(iuser){
+    console.log(iuser);
+    location.href = '/user/profile?iuser=${iuser}';
+}
 const feedObj = {
     limit: 5,
     itemLength: 0,
@@ -41,10 +46,10 @@ const feedObj = {
             topDiv.classList.add('top')
             topDiv.innerHTML = `
             <div class="itemProfileCont">
-                <img src="/pic/profile/${item.iuser}/${item.mainProfile}">
+                <img src="/pic/profile/${item.iuser}/${item.mainProfile}" onclick="moveToProfile(${item.iuser})">
             </div>
             <div>
-                <div>${item.writer} - ${regDtInfo}</div>
+                <div><span class="pointer" onclick="moveToProfile(${item.iuser})"></span>${item.writer} - ${regDtInfo}</div>
                 <div>${item.location == null ? '' : item.location}</div>
             </div>
         `;

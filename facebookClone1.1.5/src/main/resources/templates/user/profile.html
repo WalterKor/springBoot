@@ -29,6 +29,21 @@
                 <img class="profile w300 pointer"
                      th:src="@{/pic/profile/{iuser}/{img}(iuser=${auth.iuser}, img=${auth.mainProfile})}">
                 <table>
+
+                    <tr>
+                        <td>게시물</td>
+                        <td th:text="${profile.cntFeed}"></td>
+                        <td>팔로워</td>
+                        <td th:text="${profile.cntFollower}"></td>
+                        <td>팔로우</td>
+                        <td th:text="${profile.cntFollow}"></td>
+                        <td>
+                            1. 팔로우
+                            2. 맞팔로우
+                            3. 팔로우 취소
+                        </td>
+                    </tr>
+
                     <tr>
                         <th>email</th>
                         <td th:text="${auth.email}"></td>
