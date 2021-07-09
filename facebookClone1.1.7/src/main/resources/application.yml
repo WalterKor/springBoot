@@ -2,8 +2,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: 아이디
-    password: 비밀번호
+    username: splitcreed1760@gmail.com
+    password: evjddiubfejuaqgi
     properties:
       mail:
         smtp:
@@ -17,9 +17,9 @@ spring:
     mode: HTML
     cache: false
   datasource:
-    url: jdbc:mysql://localhost:3308/facebook
+    url: jdbc:mysql://localhost:3306/facebook
     username: root
-    password: koreait2021
+    password: koreait
     driver-class-name: org.mariadb.jdbc.Driver
   servlet:
     multipart:
