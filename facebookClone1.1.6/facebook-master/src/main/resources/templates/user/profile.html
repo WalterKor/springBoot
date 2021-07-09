@@ -34,16 +34,17 @@
                         <td th:text="${profile.cntFollower}"></td>
                         <td>팔로우</td>
                         <td th:text="${profile.cntFollow}"></td>
+                        <!--다르다면-->
                         <td th:unless="${auth.iuser eq profile.iuser}">
                             <th:block th:if="${profile.isMeFollowYou eq 1}">
-                                <input type="button" value="팔로우 취소">
+                                <input type="button"  class="instaBtn instaBtnEnable" id="btnFollow" data-follow="1" value="팔로우 취소">
                             </th:block>
                             <th:block th:unless="${profile.isMeFollowYou eq 1}">
                                 <th:block th:if="${profile.isYouFollowMe eq 1}">
-                                    <input type="button" value="맞팔로우">
+                                    <input type="button" class="instaBtn" id="btnFollow" data-follow="0" value="맞팔로우">
                                 </th:block>
                                 <th:block th:unless="${profile.isYouFollowMe eq 1}">
-                                    <input type="button" value="팔로우">
+                                    <input type="button" class="instaBtn" id="btnFollow" data-follow="0" value="팔로우">
                                 </th:block>
                             </th:block>
                         </td>

@@ -1,7 +1,7 @@
 const profileImgElem = document.querySelector('#flexContainer .profile.w300.pointer');
 const modalElem = document.querySelector('section .modal');
 const modalCloseElem = document.querySelector('section .modal .modal_close');
-
+const btnFollowElem = document.querySelector('#btnFollow'); //팔로우 버튼
 //모든 no-main-profile 아이콘에 이벤트를 걸어준다.
 //이벤트는 메인 이미지 변경처리
 const profileImgParentList = document.querySelectorAll('.profile-img-parent');
@@ -73,7 +73,46 @@ if(modalCloseElem) {
     });
 }
 
+btnFollowElem.addEventListener('click',()=>{
+    //UserController에 메소드 하나로 팔로우 팔로우 취소처리를 할 겁니다.
+    //내 iuser , 상대iuser
+    //이때, 내가 보내야하는 자료는 무엇인가요
+    const param = {iuserYou : localConstElem.dataset.iuser}
+    const init = {}
+    let queryString = '';
+        switch(btnFollowElem.dataset.follow){
+            case '0':
+                //no팔로우 -> 팔로우
+                init.metod = 'POST';
+                init.headers = {'Content-Type' : 'application/json'};
+                init.body = JSON.stringify(param);
+                break;
 
+            case '1':
+                //팔로우에서 팔로우 취소
+                init.metod = 'DELETE';
+                queryString = `?iuserYou=${param.iuserYout}`;
+                break;
+
+    } fetch('follow' + queryString,init)
+        .then(res => res.json())
+        .then(myJson =>{
+            console.log(myJson);
+            if(myJson.result === 1){
+                let buttonNm = '팔로우취소';
+                if(btnFollowElem.dataset.follow === '1'){
+                  if(myJson.youFollowMe == null){ buttonNm = '팔로우'}
+                  else { buttonNm = '팔로우' }
+                }
+                btnFollowElem.classList.toggle('instaBtnEnable');
+                btnFollowElem.value = buttonNm;
+                btnFollowElem.dataset.follow = 1 - btnFollowElem.dataset.follow
+            }  else{
+                alert('에러가 발생했습니다');
+            }
+        });
+
+})
 const localConstElem = document.querySelector('#localConst');
 
 feedObj.url = '/user/feedList';
