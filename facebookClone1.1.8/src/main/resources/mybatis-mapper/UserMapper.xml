@@ -72,8 +72,16 @@
         WHERE iuserMe = ${iuserMe} AND iuserYou = ${iuserYou}
     </delete>
 
-    <select id="selUserFollowerList" resultType="UserDomain">
-
+    <select id="selUserFollowList" resultType="UserDomain">
+        SELECT B.iuser, B.nm, B.mainProfile,
+        CASE WHEN C.iuserMe is null Then 0 ELSE 1 End AS isMeFollowYou
+        FROM t_user_follow  A
+        INNER JOIN t_user B
+        ON A.iuserYou = B.iuser
+        AND  iuserMe = ${iuserYou}
+        LEFT JOIN t_user_follow C
+        ON C.iuserMe = ${iuserMe}
+        AND C.iuserYou = A.iuserYou;
     </select>
 
 

@@ -4,10 +4,7 @@ import com.koreait.facebook.common.MyConst;
 import com.koreait.facebook.feed.model.FeedDTO;
 import com.koreait.facebook.feed.model.FeedDomain2;
 import com.koreait.facebook.security.UserDetailsImpl;
-import com.koreait.facebook.user.model.UserDTO;
-import com.koreait.facebook.user.model.UserEntity;
-import com.koreait.facebook.user.model.UserFollowEntity;
-import com.koreait.facebook.user.model.UserProfileEntity;
+import com.koreait.facebook.user.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -90,9 +87,11 @@ public class UserController {
         return service.delUserFollow(param);
     }
 
-    @RequestBody
+    @ResponseBody
     @GetMapping("/getFollowList")
-    public Map<String, Object> getFollowList()
+    public List<UserDomain> getFollowList(UserFollowEntity param){
+        return service.selUserFollowList(param);
+    }
 
 
 

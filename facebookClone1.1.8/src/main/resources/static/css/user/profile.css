@@ -19,7 +19,11 @@ section { display: flex; flex-direction: column; align-items: center; }
 .modal-follow .container > div.top { height: 33px}
 .modal-follow #title { text-align: center; padding-top: 10px; padding-bottom: 5px;}
 .modal-follow .container i { position: absolute; right: 5px; top: 10px; cursor: pointer; font-size: 26px; color: black; margin-left: 5px;}
-.modal-follow .container .followCont { height: 367px; border-top: 1px solid #b4b4b4;}
+.modal-follow .container .followCont {overflow-y: auto; height: 367px; border-top: 1px solid #b4b4b4;}
+.modal-follow .container .followCont .follow-item{display: flex;}
+.modal-follow .container .followCont .follow-item img > div { flex-grow: 1; padding-left: 8px; padding-right: 8px; margin-top: 5px; }
+
+
 
 
 .modal .swiper-container { height: 40vw; width: 90vw; }

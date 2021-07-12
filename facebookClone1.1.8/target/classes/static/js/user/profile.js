@@ -9,25 +9,44 @@ const followerElemArr = document.querySelectorAll('.pointer.follower')
 const followElemArr = document.querySelectorAll('.pointer.follow')
 const modalFollowElem = document.querySelector('.modal-follow');
 const modalFollowCloseElem = document.querySelector('.modal-follow #modal-follow-close');
+const modalFollowItemConElem = document.querySelector('.followCont');
+const modalFollowTitleElem = modalFollowElem.querySelector('#title');
+
 
 // 주소값이 있으면
 if(followerElemArr){
     followerElemArr.forEach(item =>{
        item.addEventListener('click',()=>{
+          modalFollowTitleElem.innerText = "팔로워";
           modalFollowElem.classList.remove('hide');
+
        });
     });
 
 }
 
-if(followElemArr){
-    followElemArr.forEach(item =>{
-        item.addEventListener('click',()=>{
-            console.log('팔로우');
-
-        })
-    })
+if(followElemArr) {
+    followElemArr.forEach(item => {
+        item.addEventListener('click', () => {
+            modalFollowElem.classList.remove('hide');
+            modalFollowTitleElem.innerText = "팔로우";
+            modalFollowItemConElem.innerHTML = '';
+            //프로필 사용자가 팔로우한 사람들 리스트
+            fetch(`getFollowList?iuserYou=${localConstElem.dataset.iuser}`)
+                .then(res => res.json())
+                .then(myJson => {
+                    if(myJson.length > 0) {
+                        myJson.forEach(item => {
+                            const cont = makeFollowItem(item);
+                            modalFollowItemConElem.append(cont);
+                        });
+                    }
+                });
+        });
+    });
 }
+
+
 // 이벤트가 쌓이는걸 방지하게 위해서
 if(modalFollowCloseElem){
     modalFollowCloseElem.addEventListener('click', ()=>{
@@ -35,6 +54,39 @@ if(modalFollowCloseElem){
     });
 }
 
+function makeFollowItem(item){
+
+    const globalContElem = document.querySelector('#globalConst');
+    const loginUser = globalContElem.dataset.
+    const myIuser = localConstElem.dataset.iuser;
+    const cont = document.createElement('div');
+    cont.className = 'follow-item-cont';
+    const img = document.createElement('img');
+    img.className = 'profile wh30';
+    img.src = `/pic/profile/${item.iuser}/${item.mainProfile}`;
+    img.onerror = () =>{ img.style.visibility = 'hidden' };
+
+    const nm = document.createElement('div');
+    nm.innerText = item.nm;
+    const btn = document.createElement('input');
+    btn.className = 'instaBtn';
+
+    cont.append(img);
+    cont.append(nm);
+
+    if(parseInt(loginUser) !== item.iuser ){
+        btn.type = 'button';
+        if(item.isMeFollowYou) {
+            btn.value = '팔로우 취소';
+        }else {
+            btn.classList.add('instaBtnEnable');
+            btn.value = '팔로우';
+        }
+        cont.append(btn);
+    }
+    return cont;
+
+}
 
 
 
