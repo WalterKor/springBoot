@@ -17,6 +17,7 @@ public interface UserMapper {
     int updUserMainProfile(UserProfileEntity param);
 
     List<UserDomain> selUserFollowList(UserFollowEntity param);
+    List<UserDomain> selUserFollowerList(UserFollowEntity param);
 
 
     int insUserFollow(UserFollowEntity param);

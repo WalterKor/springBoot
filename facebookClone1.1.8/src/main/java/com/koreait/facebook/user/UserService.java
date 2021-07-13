@@ -139,5 +139,11 @@ public class UserService {
         }
         return res;
     }
+
+    public List<UserDomain> selUserFollowerList(UserFollowEntity param){
+        param.setIuserMe(auth.getLoginUserPk());
+        return mapper.selUserFollowerList(param);
+    }
+
 }
 

@@ -20,6 +20,17 @@ if(followerElemArr){
           modalFollowTitleElem.innerText = "팔로워";
           modalFollowElem.classList.remove('hide');
 
+           fetch(`getFollowList?iuserYou=${localConstElem.dataset.iuser}`)
+               .then(res => res.json())
+               .then(myJson => {
+                   if(myJson.length > 0) {
+                       myJson.forEach(item => {
+                           const cont = makeFollowItem(item);
+                           modalFollowItemConElem.append(cont);
+                       });
+                   }
+               });
+
        });
     });
 
@@ -67,9 +78,11 @@ function makeFollowItem(item){
     img.onerror = () =>{ img.style.visibility = 'hidden' };
 
     const nm = document.createElement('div');
-    nm.innerText = item.nm;
+    const nmText = document.createElement('span');
+    nmText.innerText = item.nm;
     const btn = document.createElement('input');
     btn.className = 'instaBtn';
+    nm.append(nmText);
 
     cont.append(img);
     cont.append(nm);
