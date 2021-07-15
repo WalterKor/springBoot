@@ -10,6 +10,7 @@ import org.apache.ibatis.type.Alias;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserEntity {
+
     private int iuser;
     private String provider;
     private String email;

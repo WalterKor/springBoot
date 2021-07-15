@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
+/*로컬 로그인*/
 public class CustomUserPrincipal implements UserDetails, OAuth2User {
 
     @Getter private UserEntity user;
@@ -23,7 +24,7 @@ public class CustomUserPrincipal implements UserDetails, OAuth2User {
         this.user = user;
         this.attributes = attributes;
     }
-
+    /*소셜로그인*/
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
