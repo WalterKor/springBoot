@@ -1,6 +1,6 @@
 const selectedImgListElem = document.querySelector('#selectedImgList');
 const imgArrElem = document.querySelector("#imgArr");
-imgArrElem.addEventListener('change', ()=>{
+    imgArrElem.addEventListener('change', ()=>{
     console.log('ddd');
     const reader = new FileReader();
 
