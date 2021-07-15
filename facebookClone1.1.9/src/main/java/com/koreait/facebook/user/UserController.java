@@ -42,6 +42,7 @@ public class UserController {
         return "redirect:login?auth=" + result;
     }
 
+
     @GetMapping("/profile")
     public void profile(Model model, UserEntity param, @AuthenticationPrincipal CustomUserPrincipal userDetails) {
         System.out.println(param);
