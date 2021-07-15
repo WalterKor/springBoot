@@ -69,8 +69,8 @@ function makeFollowItem(item){
 
     const globalContElem = document.querySelector('#globalConst');
     const loginUser = globalContElem.dataset.
-    const myIuser = localConstElem.dataset.iuser;
-    const cont = document.createElement('div');
+    // const myIuser = localConstElem.dataset.iuser;
+    // const cont = document.createElement('div');
     cont.className = 'follow-item-cont';
     const img = document.createElement('img');
     img.className = 'profile wh30';

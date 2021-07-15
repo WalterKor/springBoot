@@ -82,6 +82,19 @@
         LEFT JOIN t_user_follow C
         ON C.iuserMe = ${iuserMe}
         AND C.iuserYou = A.iuserYou;
+        where A.iuser =
+    </select>
+
+    <select id="selUserFollowerList">
+        SELECT B.iuser, B.nm, B.mainProfile,
+        CASE WHEN C.iuserMe is null Then 0 ELSE 1 End AS isMeFollowYou
+        FROM t_user_follow  A
+        INNER JOIN t_user B
+        On A.iuserMe = B.Iuseryou
+        left join t_user_follow C
+        On C.iuserMe = ${iuserMe}
+        and C.iuserYou = A.iuserMe
+        where A.iuserYou = ${iuserYou}
     </select>
 
 
