@@ -39,6 +39,7 @@ public class UserService {
         String hashedPw = passwordEncoder.encode(param.getPw());
         param.setPw(hashedPw);
         param.setAuthCd(authCd);
+        param.setProvider("local");
         int result = userDetailService.join(param);
 
         if(result == 1) { //메일 쏘기!! (id, authcd값을 메일로 쏜다.)

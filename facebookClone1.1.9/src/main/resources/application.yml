@@ -17,7 +17,7 @@ spring:
     mode: HTML
     cache: false
   datasource:
-    url: jdbc:mysql://localhost:3306/facebook
+    url: jdbc:mysql://localhost:3308/facebook
     username: root
     password: koreait
     driver-class-name: org.mariadb.jdbc.Driver
@@ -41,7 +41,7 @@ spring:
             client-secret: f0d3839485af42836dd68b8bd75291f5
             scope:
               - email
-              - public_porofile
+              - public_profile
           kakao:
             authorization-grant-type: authorization_code
             #Rest Api 키값
@@ -51,7 +51,7 @@ spring:
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             #내가 갖고싶은 범위
             scope:
-              - profile_nikname
+              - profile_nickname
               - profile_image
             client-authentication-method: POST
             client-name: Kakao

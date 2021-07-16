@@ -20,7 +20,7 @@ CREATE TABLE t_user_profile(
    FOREIGN KEY(iuser) REFERENCES t_user(iuser)
 );
 
-DROP TABLE t_feed;
+
 CREATE TABLE t_feed(
    ifeed INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
    location VARCHAR(20),
@@ -30,7 +30,7 @@ CREATE TABLE t_feed(
    FOREIGN KEY (iuser) REFERENCES t_user(iuser)
 );
 
-DROP TABLE t_feed_img;
+
 CREATE TABLE t_feed_img(
    ifeedimg INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
    ifeed INT UNSIGNED NOT NULL,
