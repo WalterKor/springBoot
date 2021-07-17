@@ -1,0 +1,41 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://localhost:3308/security?serverTimezone=Asia/Seoul
+    username: root
+    password: koreait
+
+  #머스테치 기본설정
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .mustache
+
+  jpa:
+    hibernate:
+      ddl-auto: update #create update none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: "875919437056-rh3np19943os9vpii98crn4hqkd274sh.apps.googleusercontent.com"
+            client-secret: "5V4De6a79E0PfW2Aa_DQLMtp"
+            scope:
+            - email
+            - profile
+

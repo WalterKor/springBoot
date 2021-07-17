@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.example'
+group = 'com.cos'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -30,8 +30,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    //mysql connactor해줘야함
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.25'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-oauth2-client', version: '2.5.2'
+
 
 }
 
