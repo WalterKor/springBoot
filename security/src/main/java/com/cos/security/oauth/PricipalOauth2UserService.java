@@ -18,7 +18,7 @@ public class PricipalOauth2UserService extends DefaultOAuth2UserService {
         // 코드를토대로 AcessToken을 요청
         //userRequest 정보 => 회원프로필을 받아야한다.(loadUser함수)을통해서 회원 프로필을 받을 수 있다.
 
-        OAuth2User oAuth2User = super.loadUser(userRequest);
+        OAuth2User oAuth2User = super.loadUser(userRequest); //회원정보가 들어가있는것
 
         return super.loadUser(userRequest);
     }

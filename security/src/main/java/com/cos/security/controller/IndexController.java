@@ -9,7 +9,10 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,13 +30,28 @@ public class IndexController {
 
     @GetMapping("/test/login")
     @ResponseBody
-    public String testLogin(Authentication authentication){
-
+    public String testLogin(Authentication authentication
+    , @AuthenticationPrincipal PricipalDetails userDetails){ //DI의존성 주입
         System.out.println("/test/login==============================");
         PricipalDetails pricipalDetails = (PricipalDetails)authentication.getPrincipal();
+
         System.out.println("authentication : " +pricipalDetails.getUser());
+        System.out.println("UserDetails: " +userDetails.getUser());
         return "세션정보확인하기";
     }
+
+    @GetMapping("/test/oauth/login")
+    @ResponseBody
+    public String testLogin(Authentication authentication,
+                            @AuthenticationPrincipal OAuth2User oAuth){ //DI의존성 주입
+        System.out.println("/test/oauth/login==============================");
+
+        OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
+        System.out.println("authentication : " +oAuth2User.getAttributes());
+        System.out.println("oauth2User :" + oAuth.getAttributes());
+        return "oauth정보확인하기";
+    }
+
 
     @GetMapping({"","/"})
     public String index(){
