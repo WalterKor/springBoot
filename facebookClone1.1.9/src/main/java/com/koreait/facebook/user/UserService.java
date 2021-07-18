@@ -21,6 +21,7 @@ import java.util.Map;
 
 @Service
 public class UserService {
+
     @Autowired private EmailService email;
     @Autowired private PasswordEncoder passwordEncoder;
     @Autowired private IAuthenticationFacade auth;

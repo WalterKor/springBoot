@@ -42,8 +42,5 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
                 .userService(principalOauth2UserService);
 
 
-
-
-
     }
 }

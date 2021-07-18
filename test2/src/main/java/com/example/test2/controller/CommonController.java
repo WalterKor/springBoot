@@ -22,12 +22,11 @@ public class CommonController {
         return "/mainpage";
     }
 
+
+
     //=====================login============================
     @GetMapping("/loginForm")
     public void loginForm(){ }
-
-
-
 
     //=====================join============================
     @GetMapping("/joinForm")
