@@ -42,8 +42,8 @@ public class IndexController {
 
     @GetMapping("/test/oauth/login")
     @ResponseBody
-    public String testLogin(Authentication authentication,
-                            @AuthenticationPrincipal OAuth2User oAuth){ //DI의존성 주입
+    public String testLogin(Authentication authentication
+            ,@AuthenticationPrincipal OAuth2User oAuth){ //DI의존성 주입
         System.out.println("/test/oauth/login==============================");
 
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
@@ -58,10 +58,12 @@ public class IndexController {
         //머스테치 기본폴더 src/main/resources/
         return "index";
     }
-
+    //OAuth로그인을해도 PricipalDetails
+    //일반로그인을해도 PricipalDetails 받을 수 있다.
     @GetMapping("/user")
     @ResponseBody
-    public String user(){
+    public String user(@AuthenticationPrincipal PricipalDetails pricipalDetails){
+        System.out.println("principalDetails:" +pricipalDetails.getUser());
         return "user";
     }
 

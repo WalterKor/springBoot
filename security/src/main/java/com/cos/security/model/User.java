@@ -1,6 +1,8 @@
 package com.cos.security.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Data
+@NoArgsConstructor //디폴트 생성자가 없어서 에러가 터졌고 이거롤 해결
 public class User {
 
     @Id //primary Key
@@ -26,4 +29,14 @@ public class User {
     @CreationTimestamp
     private Timestamp creatDate;
 
+    @Builder
+    public User(String username, String password, String email, String role, String provider, String providerId, Timestamp creatDate) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        Provider = provider;
+        ProviderId = providerId;
+        this.creatDate = creatDate;
+    }
 }
