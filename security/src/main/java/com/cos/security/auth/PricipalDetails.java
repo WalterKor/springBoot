@@ -32,6 +32,7 @@ public class PricipalDetails implements UserDetails, OAuth2User {
     public PricipalDetails(User user) {
         this.user = user;
     }
+
     //OAuth로그인 할때 사용하는 생성자
     public PricipalDetails(User user,Map<String, Object>attributes) {
         this.user = user;

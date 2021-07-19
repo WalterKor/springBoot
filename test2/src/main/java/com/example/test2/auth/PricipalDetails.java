@@ -4,15 +4,29 @@ import com.example.test2.user.model.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
+
 @Data
-public class PricipalDetails implements UserDetails {
+public class PricipalDetails implements UserDetails, OAuth2User {
 
     private User user;
+    private Map<String, Object> attributes;
 
+    //일반로그인 할때 사용하는 생성자
     public PricipalDetails(User user){
         this.user = user;
+    }
+
+    //OAuth로그인 할 때 사용하는 생성자
+
+
+    public PricipalDetails(User user,Map<String, Object> attributes) {
+        this.user = user;
+        this.attributes = attributes;
     }
 
     @Override
@@ -56,5 +70,15 @@ public class PricipalDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public String getName() {
+        return null;
     }
 }
