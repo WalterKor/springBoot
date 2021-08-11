@@ -35,6 +35,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         CustomUserPrincipal loginUser = new CustomUserPrincipal(chkUser, attributes);
         return loginUser;
     }
+
     private UserEntity convertOauthToUserEntity(OAuth2UserInfo userInfo) {
         UserEntity user = UserEntity.builder()
                             .email(userInfo.getId()) //social 사이트의 pk값을 우리 user테이블에 email에 저장함.
