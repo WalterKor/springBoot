@@ -2,8 +2,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username:
-    password:
+    username: johyeonmin841@gmail.com
+    password: zpjvoilqpcorlnmu
     properties:
       mail:
         smtp:
@@ -19,7 +19,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3308/facebook
     username: root
-    password: koreait2021
+    password: koreait
     driver-class-name: org.mariadb.jdbc.Driver
   servlet:
     multipart:
@@ -31,14 +31,14 @@ spring:
       client:
         registration:
           google:
-            client-id:
-            client-secret:
+            client-id: "875919437056-rh3np19943os9vpii98crn4hqkd274sh.apps.googleusercontent.com"
+            client-secret: "5V4De6a79E0PfW2Aa_DQLMtp"
             scope:
               - profile
               - email
           facebook:
-            client-id:
-            client-secret:
+            client-id: 248745953463459
+            client-secret: 54030a23563e5247ec031b2c908ef40e
             scope:
               - email
               - public_profile
@@ -54,8 +54,8 @@ spring:
             client-name: Kakao
           naver:
             authorization-grant-type: authorization_code
-            client-id:
-            client-secret:
+            client-id: LDxu3BhL6x4w704G_x3a
+            client-secret: cCMi8kjLld
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             scope: name,email,profile_image
             client-name: Naver

@@ -2,6 +2,9 @@ package com.cos.security.oauth;
 
 import com.cos.security.auth.PricipalDetails;
 import com.cos.security.model.User;
+import com.cos.security.oauth.provider.FacebookUserInfo;
+import com.cos.security.oauth.provider.GoogleUserInfo;
+import com.cos.security.oauth.provider.OAuth2UserInfo;
 import com.cos.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,11 +39,25 @@ public class PricipalOauth2UserService extends DefaultOAuth2UserService {
         System.out.println("getAttributes:" +oAuth2User.getAttributes());
 
         //회원가입을 강제로 진행해볼 예정
-        String provider = userRequest.getClientRegistration().getClientId(); //구글
-        String providerId = oAuth2User.getAttribute("sub");
+        OAuth2UserInfo oAuth2UserInfo = null;
+        if(userRequest.getClientRegistration().getRegistrationId().equals("google")){
+            System.out.println("구글로그인 요청");
+            oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
+        }else if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")){
+            System.out.println("페이스북로그인요청");
+            oAuth2UserInfo = new FacebookUserInfo(oAuth2User.getAttributes());
+        }else {
+
+        }
+
+
+
+
+        String provider = oAuth2UserInfo.getProvider();
+        String providerId = oAuth2UserInfo.getProviderId();
         String username = provider+"_"+providerId; //google_12348412345341;
         String password = bCryptPasswordEncoder.encode("겟인데어"); //쓸모없는 비밀번호
-        String email = oAuth2User.getAttribute("email");
+        String email = oAuth2UserInfo.getEmail();
         String role = "ROLE_USER";
 
         User userEntity =  userRepository.findByUsername(username);
@@ -58,6 +75,7 @@ public class PricipalOauth2UserService extends DefaultOAuth2UserService {
         }else{
             System.out.println("구글로그인을 이미 한적이 있다.");
         }
+
         return new PricipalDetails(userEntity, oAuth2User.getAttributes());
         //일반적으론 userEntity만있고 oAuth2로 로그인하면 userEntity랑 토큰에서주는값이랑 둘다있다.
     }
