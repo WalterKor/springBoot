@@ -131,8 +131,9 @@ feedObj.getFeedList(1);
 
 
 /******************************************************** 팔로우 모달 **/
-const followerElemArr = document.querySelectorAll('.pointer.follower');
-const followElemArr = document.querySelectorAll('.pointer.follow');
+const followerElemArr = document.querySelectorAll('.pointer.follower'); //팔로워 컨테이터
+const followElemArr = document.querySelectorAll('.pointer.follow'); //팔로우 컨테이너
+
 const modalFollowElem = document.querySelector('.modal-follow');
 const modalFollowTitleElem = modalFollowElem.querySelector('#title');
 const modalFollowCloseElem = document.querySelector('.modal-follow #modal-follow-close');

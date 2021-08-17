@@ -17,7 +17,7 @@ spring:
     mode: HTML
     cache: false
   datasource:
-    url: jdbc:mysql://localhost:3308/facebook
+    url: jdbc:mysql://localhost:3306/facebook
     username: root
     password: koreait
     driver-class-name: org.mariadb.jdbc.Driver
@@ -83,4 +83,4 @@ mybatis:
 
 #톰캣 포트 변경
 server:
-  port: 8090
+  port: 8080
