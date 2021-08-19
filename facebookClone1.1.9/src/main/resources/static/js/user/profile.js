@@ -130,7 +130,7 @@ feedObj.iuser = localConstElem.dataset.iuser;
 feedObj.getFeedList(1);
 
 
-/******************************************************** 팔로우 모달 **/
+/********************************* 팔로우 모달 **************************/
 const followerElemArr = document.querySelectorAll('.pointer.follower'); //팔로워 컨테이터
 const followElemArr = document.querySelectorAll('.pointer.follow'); //팔로우 컨테이너
 
@@ -195,6 +195,7 @@ function makeFollowItem(item) {
 
     const cont = document.createElement('div');
     cont.className = 'follow-item';
+    //이미지만들기
     const img = document.createElement('img');
     img.className = 'profile wh30 pointer';
     img.src = `/pic/profile/${item.iuser}/${item.mainProfile}`;
@@ -202,7 +203,7 @@ function makeFollowItem(item) {
     img.addEventListener('click', ()=> {
         moveToProfile(item.iuser); //feed.js 에 있는 메소드
     });
-
+    //이름만들기
     const nm = document.createElement('div');
     const nmText = document.createElement('span');
     nmText.innerText = item.nm;

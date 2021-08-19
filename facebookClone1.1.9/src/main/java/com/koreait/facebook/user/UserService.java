@@ -120,6 +120,8 @@ public class UserService {
     public List<FeedDomain2> selFeedList2(FeedDTO param) {
         return feedMapper.selFeedList2(param);
     }
+
+
     public List<UserDomain> selUserFollowList(UserFollowEntity param) {
         param.setIuserMe(auth.getLoginUserPk());
         return mapper.selUserFollowList(param);
